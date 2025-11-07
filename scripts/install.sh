@@ -25,7 +25,7 @@ readonly BLUE='\033[0;34m'
 readonly NC='\033[0m' # No Color
 
 # Progress tracking
-TOTAL_STEPS=6
+TOTAL_STEPS=7
 CURRENT_STEP=0
 
 # Output functions
@@ -471,11 +471,94 @@ main() {
     restart_lsws
 
     if [[ "$update_only" == false ]]; then
+        setup_smart_bot_verification
         create_nightly_script
         verify_installation
         show_completion
     else
         success "Update completed"
+    fi
+}
+
+# Setup Smart Bot Verification
+setup_smart_bot_verification() {
+    step "Setting up Smart Bot Verification"
+
+    local bot_script_dir="/usr/local/bin"
+    local bot_script_name="update-bot-ips"
+    local bot_script_path="$bot_script_dir/$bot_script_name.sh"
+
+    # Copy bot verification script
+    if [[ -f "$SCRIPT_DIR/update-bot-ips.sh" ]]; then
+        info "Installing smart bot verification script..."
+        sudo cp "$SCRIPT_DIR/update-bot-ips.sh" "$bot_script_path"
+        sudo chmod 755 "$bot_script_path"
+
+        # Install dependencies if missing
+        if ! command -v curl >/dev/null 2>&1; then
+            warn "Installing curl for bot IP updates..."
+            if command -v apt >/dev/null 2>&1; then
+                sudo apt update && sudo apt install -y curl
+            elif command -v yum >/dev/null 2>&1; then
+                sudo yum install -y curl
+            elif command -v dnf >/dev/null 2>&1; then
+                sudo dnf install -y curl
+            fi
+        fi
+
+        # Install ipcalc for better CIDR handling
+        if ! command -v ipcalc >/dev/null 2>&1; then
+            warn "Installing ipcalc for improved IP range processing..."
+            if command -v apt >/dev/null 2>&1; then
+                sudo apt install -y ipcalc
+            elif command -v yum >/dev/null 2>&1; then
+                sudo yum install -y ipcalc
+            elif command -v dnf >/dev/null 2>&1; then
+                sudo dnf install -y ipcalc
+            fi
+        fi
+
+        # Install jq for JSON parsing
+        if ! command -v jq >/dev/null 2>&1; then
+            warn "Installing jq for JSON parsing..."
+            if command -v apt >/dev/null 2>&1; then
+                sudo apt install -y jq
+            elif command -v yum >/dev/null 2>&1; then
+                sudo yum install -y jq
+            elif command -v dnf >/dev/null 2>&1; then
+                sudo dnf install -y jq
+            fi
+        fi
+
+        # Run initial bot IP update
+        info "Running initial bot IP verification setup..."
+        if sudo "$bot_script_path"; then
+            success "Smart bot verification configured successfully"
+        else
+            warn "Bot IP update failed, but security rules are still active"
+        fi
+
+        # Add cron job for automatic updates
+        info "Setting up automatic bot IP updates..."
+        local cron_entry="0 2 * * * $bot_script_path >> /var/log/bot-ip-updates.log 2>&1"
+
+        # Add to crontab if not already present
+        if ! sudo crontab -l 2>/dev/null | grep -q "$bot_script_name"; then
+            (sudo crontab -l 2>/dev/null; echo "$cron_entry") | sudo crontab -
+            success "Cron job added for automatic bot IP updates"
+        else
+            info "Cron job already exists"
+        fi
+
+        success "Smart bot verification setup completed"
+        info "• Googlebot and Bingbot IPs will be automatically verified"
+        info "• Fake search engine bots will be blocked"
+        info "• IP ranges update daily at 2:00 AM"
+        info "• Monitor logs: tail -f /var/log/bot-ip-updates.log"
+
+    else
+        warn "Smart bot verification script not found, skipping advanced bot protection"
+        warn "Basic bot protection is still active"
     fi
 }
 
