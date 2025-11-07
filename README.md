@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Security](https://img.shields.io/badge/Security-Hardening-green?style=for-the-badge&logo=security)](https://github.com/your-username/openlitespeed-cyberpanel-wordpress-security)
+[![Security](https://img.shields.io/badge/Security-Hardening-green?style=for-the-badge&logo=security)](https://github.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security)
 [![WordPress](https://img.shields.io/badge/WordPress-Protection-blue?style=for-the-badge&logo=wordpress)](https://wordpress.org)
 [![OpenLiteSpeed](https://img.shields.io/badge/OpenLiteSpeed-Web%20Server-007A5A?style=for-the-badge&logo=litespeed)](https://openlitespeed.org)
 [![CyberPanel](https://img.shields.io/badge/CyberPanel-Hosting%20Panel-FF6B35?style=for-the-badge&logo=cyberpanel)](https://cyberpanel.net)
@@ -12,7 +12,7 @@
 
 Protects WordPress sites at the OpenLiteSpeed level. Copy-paste friendly with no prior webserver knowledge required.
 
-[⭐ **Give us a star**](https://github.com/your-username/openlitespeed-cyberpanel-wordpress-security) if this helps you!
+[⭐ **Give us a star**](https://github.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security) if this helps you!
 
 </div>
 
@@ -20,10 +20,10 @@ Protects WordPress sites at the OpenLiteSpeed level. Copy-paste friendly with no
 
 ```bash
 # Install security for all WordPress sites
-wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/install-direct.sh | sudo bash
+wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/install-direct.sh | sudo bash
 
 # Test protections
-wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com
+wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com
 ```
 
 **Expected Results:**
@@ -69,13 +69,13 @@ This tool is designed for CyberPanel's standard layout:
 ## ⚡ Quick Reference
 
 - Install everywhere:
-  `wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/install-direct.sh | sudo bash`
+  `wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/install-direct.sh | sudo bash`
 - Run security verification:
-  `wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com`
+  `wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com`
 - Uninstall (removes all includes + cron):
   ```bash
   curl -fsSL -o /tmp/wpsec-uninstall.sh \
-    https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/scripts/uninstall.sh
+    https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/uninstall.sh
   sudo bash /tmp/wpsec-uninstall.sh
   ```
 
@@ -91,7 +91,7 @@ This tool is designed for CyberPanel's standard layout:
 If you prefer to clone first:
 
 ```bash
-git clone https://github.com/your-username/openlitespeed-cyberpanel-wordpress-security.git
+git clone https://github.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security.git
 cd openlitespeed-cyberpanel-wordpress-security
 sudo ./scripts/install.sh
 ```
@@ -117,13 +117,13 @@ After installation, run the security test suite:
 
 ```bash
 # Basic test
-wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com
+wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com
 
 # Verbose test with detailed output
-wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com --verbose
+wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com --verbose
 
 # Test bypassing CDN
-wget -qO- https://raw.githubusercontent.com/your-username/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com --skip-cdn
+wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com --skip-cdn
 ```
 
 ## 📊 Security Impact
