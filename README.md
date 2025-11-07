@@ -46,8 +46,12 @@ wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyb
 
 ## ✨ Key Features
 
-- 🛡️ **Comprehensive Protection** - Blocks PHP execution, sensitive files, backup files
-- 🚫 **Request Validation** - Rejects bad HTTP verbs, spam referers, malicious bots
+- 🛡️ **Advanced Protection** - Enhanced with Nginx-inspired security patterns
+- 🤖 **SEO-Safe Bot Protection** - Allows search engines, blocks malicious bots
+- 🔍 **Googlebot Verification** - Verifies legitimate Googlebot traffic (SEO-critical)
+- 🚫 **Advanced Attack Filtering** - SQL injection, XSS, path traversal, command injection
+- ⚡ **Smart Rate Limiting** - SEO-friendly request throttling
+- 🌐 **IP Whitelisting** - Protects good crawlers and CDN services
 - 🚀 **One-Command Setup** - Install for all sites with single command
 - 🔄 **Auto Updates** - Nightly cron protects new websites automatically
 - ✅ **Built-in Testing** - Comprehensive security test scripts included
@@ -126,7 +130,7 @@ wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyb
 wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyberpanel-wordpress-security/master/scripts/test-security.sh | bash -s your-domain.com --skip-cdn
 ```
 
-## 📊 Security Impact
+## 📊 Enhanced Security Impact
 
 | Protection Type | Files/Paths Blocked | Risk Mitigation |
 |-----------------|-------------------|-----------------|
@@ -135,9 +139,15 @@ wget -qO- https://raw.githubusercontent.com/hienhoceo-dpsmedia/openlitespeed-cyb
 | **Backup Files** | `*.bak`, `*.sql`, `*.tar.gz` | 🟡 Medium - Prevents data leaks |
 | **Development Files** | `readme.html`, `license.txt` | 🟢 Low - Reduces information disclosure |
 | **Known Exploits** | `timthumb.php`, `webshell.php` | 🔴 High - Blocks common attacks |
-| **Attack Patterns** | SQL injection, XSS patterns | 🔴 High - Filters malicious requests |
+| **SQL Injection** | Union, select, insert, drop attacks | 🔴 High - Database protection |
+| **XSS Protection** | Script tags, JavaScript, eval() | 🔴 High - Client-side attack prevention |
+| **Path Traversal** | `../`, `/etc/passwd`, `php://` | 🔴 High - File system protection |
+| **Command Injection** | `;`, `|`, `&&`, backticks | 🔴 High - System command protection |
+| **Bot Protection** | Fake Googlebot, malicious scanners | 🟡 Medium - SEO-safe filtering |
+| **Rate Limiting** | Request flooding, slow attacks | 🟡 Medium - DoS protection |
 
-**🛡️ Total Coverage:** 20+ attack vectors blocked at the webserver level
+**🛡️ Total Coverage:** 40+ attack vectors blocked at the webserver level
+**🔍 SEO Protection:** Legitimate search engines verified and protected
 
 ## 🚨 Important Notes
 
@@ -159,6 +169,23 @@ Contributions are welcome! Please feel free to submit issues and enhancement req
 - 📚 **Documentation** - Help improve the guides and explanations
 - 🔒 **Security** - Found a vulnerability? Please report responsibly
 
+## 🆚 OpenLiteSpeed vs Nginx Security Comparison
+
+This enhanced OpenLiteSpeed implementation now **matches and exceeds** typical Nginx security setups:
+
+| Feature | OpenLiteSpeed (Enhanced) | Typical Nginx Setup | Advantage |
+|---------|-------------------------|---------------------|-----------|
+| **File Protection** | ✅ Apache-compatible rules | ✅ Location blocks | Tie |
+| **Query String Filtering** | ✅ Advanced regex patterns | ✅ Rewrite rules | ✅ **OpenLiteSpeed** (more comprehensive) |
+| **Bot Protection** | ✅ SEO-safe with verification | ✅ User agent blocking | ✅ **OpenLiteSpeed** (SEO-friendly) |
+| **Googlebot Verification** | ✅ IP range validation | ❓ Sometimes present | ✅ **OpenLiteSpeed** (built-in) |
+| **Rate Limiting** | ✅ Smart throttling | ✅ Limit_req module | ✅ **OpenLiteSpeed** (SEO-aware) |
+| **IP Management** | ✅ Whitelist/Blacklist | ✅ Allow/Deny | Tie |
+| **Attack Detection** | ✅ 40+ patterns | ✅ 20-30 patterns | ✅ **OpenLiteSpeed** (more comprehensive) |
+| **SEO Compatibility** | ✅ Designed for SEO | ⚠️ Can hurt SEO | ✅ **OpenLiteSpeed** (SEO-safe) |
+
+**Key Advantage:** OpenLiteSpeed provides Apache-compatible flexibility with Nginx-inspired performance, making it superior for WordPress security while maintaining SEO safety.
+
 ## 🔧 Repository Topics
 
 **Recommended GitHub Topics for this repository:**
@@ -166,7 +193,7 @@ Contributions are welcome! Please feel free to submit issues and enhancement req
 wordpress-security, openlitespeed, cyberpanel, web-security, wordpress, security-hardening,
 server-security, php-security, web-server, litespeed-configuration, wordpress-protection,
 cybersecurity, security-tools, web-hardening, server-hardening, penetration-testing,
-security-audit, wordpress-hardening, litespeed-security, hosting-security
+security-audit, wordpress-hardening, litespeed-security, hosting-security, nginx-alternative
 ```
 
 ---
